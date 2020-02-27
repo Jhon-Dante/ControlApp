@@ -8,47 +8,78 @@
             <li class="menu-title">About</li>
 
             <li>
-                <a href="index.html">
+                <a href="{{ route('home')}}">
                     <i data-feather="home"></i>
-                    <span> Introduction </span>
+                    <span> Escritorio </span>
                 </a>
             </li>
 
             <li>
-                <a href="support.html">
-                    <i data-feather="help-circle"></i>
-                    <span> Customer Support </span>
+                <a href="#">
+                    <i data-feather="bell"></i>
+                    <span> Notificaciones </span>
                 </a>
             </li>
 
-            <li class="menu-title">Getting Started</li>
+            <li>
+                <a href="#">
+                    <i data-feather="twitch"></i>
+                    <span> Noticias </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i data-feather="truck"></i>
+                    <span> Productos y servicios </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i data-feather="share"></i>
+                    <span> Estacionamiento </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i data-feather="map"></i>
+                    <span> Arriendos </span>
+                </a>
+            </li>
+
+            <li class="menu-title">Pagos </li>
+
+            <li>
+                <a href="#">
+                    <i data-feather="credit-card"></i>
+                    <span> Pagos </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i data-feather="credit-card"></i>
+                    <span> Arriendos </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i data-feather="dollar-sign"></i>
+                    <span> Multas y recargas </span>
+                </a>
+            </li>
+
+            <li class="menu-title">Configuración </li>
             
             <li>
                 <a href="angular-doc.html">
-                    <i data-feather="bookmark"></i>
-                    <span> Angular </span>
+                    <i data-feather="users"></i>
+                    <span> Usuarios </span>
                 </a>
             </li>
-            <li>
-                <a href="react-doc.html">
-                    <i data-feather="bookmark"></i>
-                    <span> React </span>
-                </a>
-            </li>
-            <li>
-                <a href="vue-doc.html">
-                    <i data-feather="bookmark"></i>
-                    <span> Vue </span>
-                </a>
-            </li>
-            <li>
-                <a href="laravel-doc.html">
-                    <i data-feather="bookmark"></i>
-                    <span> Laravel </span>
-                </a>
-            </li>
-
-            <li class="menu-title">Usuario</li>
 
             <li>
                 <a href="laravel-doc.html">
@@ -58,16 +89,14 @@
             </li>
 
             <li>
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                     <i data-feather="power"></i>
                     <span> Salir </span>
                 </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
+                    @csrf
+                </form>
             </li>
 
 
