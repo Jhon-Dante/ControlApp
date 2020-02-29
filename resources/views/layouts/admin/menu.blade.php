@@ -58,12 +58,12 @@
                 </a>
             </li>
 
-            <li>
+            <!-- <li>
                 <a href="#">
                     <i data-feather="credit-card"></i>
                     <span> Arriendos </span>
                 </a>
-            </li>
+            </li> -->
 
             <li>
                 <a href="#">
