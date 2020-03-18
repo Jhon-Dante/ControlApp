@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Residentes;
+use App\User;
 use Illuminate\Http\Request;
 
 class ResidentesController extends Controller
@@ -14,9 +15,8 @@ class ResidentesController extends Controller
      */
     public function index()
     {
-        $residentes=Residentes::all();
-
-        return view('residentes.index',compact('residentes'));
+        // return Residentes::orderBy('id','DESC')->paginate();
+        return Residentes::get();
     }
 
     /**
@@ -26,7 +26,9 @@ class ResidentesController extends Controller
      */
     public function create()
     {
-        //
+
+
+    return Residentes::orderBy('id','DESC')->paginate();
     }
 
     /**
@@ -35,9 +37,33 @@ class ResidentesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function guardar(Request $request)
     {
-        //
+        // $user = new User;
+        // $user->name =           $request->nombres;
+        // $user->rut =            $request->rut;
+        // $user->email =          $request->email;
+        // $user->password =       bcrypt($request->nombres;
+        // $user->tipo_usuario =   'Residente';
+        // $user->save();
+
+        // $user=\DB::table('residentes')->insert([
+        //     'nombres' => $request->nombres;
+        //     'apellidos' => $request->apellidos;
+        //     'rut' => $request->rut;
+        //     'telefono' => $request->talefono;
+        //     'id_usuario' => 10
+        // ]);
+
+        // $residente = new Residentes;
+        // $residente->nombres =       $request['nombres'];
+        // $residente->apellidos =     $request['apellidos'];
+        // $residente->rut =           $request['rut'];
+        // $residente->telefono =      $request['telefono'];
+        // $residente->id_usuario =    $user->id;
+        // $residente->save();
+
+        return Response::json(true);
     }
 
     /**
@@ -46,9 +72,9 @@ class ResidentesController extends Controller
      * @param  \App\Residentes  $residentes
      * @return \Illuminate\Http\Response
      */
-    public function show(Residentes $residentes)
+    public function show($id)
     {
-        //
+        return Residentes::where('id', $id)->first();
     }
 
     /**
@@ -57,9 +83,10 @@ class ResidentesController extends Controller
      * @param  \App\Residentes  $residentes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Residentes $residentes)
+    public function edit(Residentes $residentes, $id)
     {
-        //
+        $residente = Residentes::find($id);
+        return $residente;
     }
 
     /**
@@ -80,8 +107,11 @@ class ResidentesController extends Controller
      * @param  \App\Residentes  $residentes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Residentes $residentes)
+    public function destroy(Request $request,$id)
     {
-        //
+        $eliminar = User::where('id', $id)->first();
+        $eliminar->delete();
+
+        // return true;
     }
 }

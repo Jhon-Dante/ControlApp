@@ -30,15 +30,21 @@
                     <div class="container-fluid">
                         <div class="row page-title">
                             <div class="col-md-12">
-                                <h4 class="mb-1 mt-0">Dashboard <label class="badge badge-soft-danger">v1.0.1</label>
+                                <h4 class="mb-1 mt-0">ControlApp <label class="badge badge-soft-danger">v1.0.1</label>
                                 </h4>
                             </div>
                         </div>
+                        <div>
+                            
+                            <app></app>
+                        </div>
+                        
+                        <!-- <example-component></example-component> -->
+                        <!-- <residentes></residentes> -->
+                        <!-- @yield('breadcomb')
+                        @yield('content') -->
 
-                        @yield('breadcomb')
-                        @yield('content')
-
-                        <div class="row" id="intro">
+                        <!-- <div class="row" id="intro">
                             <div class="col">
                                 <div class="card">
                                     <div class="card-body">
@@ -78,7 +84,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div> <!-- container-fluid -->
 
                 </div> <!-- content -->

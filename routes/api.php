@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::resource('residentes','ResidentesController');
+// Route::get('residentes', 'ResidentesController@index');
+Route::get('ver_residente/{id}', 'ResidentesController@show'); 
+Route::get('residentes/guardar', 'ResidentesController@store');

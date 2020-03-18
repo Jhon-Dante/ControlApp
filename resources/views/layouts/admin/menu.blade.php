@@ -8,46 +8,52 @@
             <li class="menu-title">About</li>
 
             <li>
-                <a href="{{ route('home')}}">
+                <router-link :to="{name: 'inicio'}">
                     <i data-feather="home"></i>
                     <span> Escritorio </span>
-                </a>
+                </router-link>
             </li>
 
             <li>
-                <a href="#">
+                <router-link :to="{name: 'notificaciones'}">
                     <i data-feather="bell"></i>
                     <span> Notificaciones </span>
-                </a>
+                </router-link>
             </li>
 
             <li>
-                <a href="#">
+                <router-link :to="{name: 'noticias'}">
                     <i data-feather="twitch"></i>
                     <span> Noticias </span>
-                </a>
+                </router-link>
             </li>
 
             <li>
-                <a href="#">
+                <router-link :to="{name: 'productosServicios'}">
                     <i data-feather="truck"></i>
                     <span> Productos y servicios </span>
-                </a>
+                </router-link>
             </li>
 
             <li>
-                <a href="#">
+                <router-link :to="{name: 'estacionamientos'}">
                     <i data-feather="share"></i>
                     <span> Estacionamiento </span>
-                </a>
+                </router-link>
             </li>
 
             <li>
-                <a href="#">
+                <router-link :to="{name: 'arriendos'}">
                     <i data-feather="map"></i>
                     <span> Arriendos </span>
-                </a>
+                </router-link>
             </li>
+
+            <li>
+                <router-link :to="{name: 'residentes'}">
+                    <i data-feather="users"></i>
+                    <span> Residentes </span>
+                </router-link>
 
             <li class="menu-title">Pagos </li>
 
