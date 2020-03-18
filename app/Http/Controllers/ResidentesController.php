@@ -109,8 +109,8 @@ class ResidentesController extends Controller
      */
     public function destroy(Request $request,$id)
     {
-        $eliminar = User::where('id', $id)->first();
-        $eliminar->delete();
+        /*$eliminar = User::where('id', $id)->first();
+        $eliminar->delete();*/
 
         // return true;
     }
