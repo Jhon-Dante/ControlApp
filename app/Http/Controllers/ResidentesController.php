@@ -28,7 +28,6 @@ class ResidentesController extends Controller
     {
 
 
-    return Residentes::orderBy('id','DESC')->paginate();
     }
 
     /**
@@ -37,33 +36,35 @@ class ResidentesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function guardar(Request $request)
+    public function store(Request $request)
     {
-        // $user = new User;
-        // $user->name =           $request->nombres;
-        // $user->rut =            $request->rut;
-        // $user->email =          $request->email;
-        // $user->password =       bcrypt($request->nombres;
-        // $user->tipo_usuario =   'Residente';
-        // $user->save();
+        $this->validate($request, [
+            'nombres' => 'required',
+            'apellidos' => 'required',
+            'rut' => 'required',
+            'telefono' => 'required',
+            'email' => 'required',
+        ]);
 
-        // $user=\DB::table('residentes')->insert([
-        //     'nombres' => $request->nombres;
-        //     'apellidos' => $request->apellidos;
-        //     'rut' => $request->rut;
-        //     'telefono' => $request->talefono;
-        //     'id_usuario' => 10
-        // ]);
+            
 
-        // $residente = new Residentes;
-        // $residente->nombres =       $request['nombres'];
-        // $residente->apellidos =     $request['apellidos'];
-        // $residente->rut =           $request['rut'];
-        // $residente->telefono =      $request['telefono'];
-        // $residente->id_usuario =    $user->id;
-        // $residente->save();
+        $user=\DB::table('users')->insert([
+            'name' =>           $request->nombres,
+            'rut' =>            $request->rut,
+            'email' =>          $request->email,
+            'password' =>       bcrypt($request->rut),
+            'tipo_usuario' =>   'Residente'
+        ]);
 
-        return Response::json(true);
+        $user=User::where('email',$request->email)->first();
+
+        $residente=\DB::table('residentes')->insert([
+            'nombres' => $request->nombres,
+            'apellidos' => $request->apellidos,
+            'rut' => $request->rut,
+            'telefono' => $request->telefono,
+            'id_usuario' => $user->id
+        ]);
     }
 
     /**
@@ -85,8 +86,7 @@ class ResidentesController extends Controller
      */
     public function edit(Residentes $residentes, $id)
     {
-        $residente = Residentes::find($id);
-        return $residente;
+        
     }
 
     /**
@@ -96,11 +96,35 @@ class ResidentesController extends Controller
      * @param  \App\Residentes  $residentes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Residentes $residentes)
+    public function update(Request $request,$id)
     {
-        //
-    }
+        $this->validate($request, [
+            'nombres' => 'required',
+            'apellidos' => 'required',
+            'rut' => 'required',
+            'telefono' => 'required',
+            'email' => 'required',
+        ]);
 
+            
+        $residente= Residentes::find($id);
+
+        $residente->nombres=$request->nombres;
+        $residente->apellidos=$request->apellidos;
+        $residente->rut=$request->rut;
+        $residente->telefono=$request->telefono;
+        $residente->save();
+
+        $user=User::find($residente->id_usuario);
+
+        $user->name=$request->nombres;
+        $user->rut=$request->rut;
+        $user->email=$request->email;
+        $user->password=bcrypt($request->rut);
+        $user->save();
+        
+
+    }
     /**
      * Remove the specified resource from storage.
      *

@@ -18,6 +18,5 @@ use Illuminate\Http\Request;
 // });
 
 Route::resource('residentes','ResidentesController');
-// Route::get('residentes', 'ResidentesController@index');
-Route::get('ver_residente/{id}', 'ResidentesController@show'); 
-Route::get('residentes/guardar', 'ResidentesController@store');
+Route::resource('estacionamientos','EstacionamientosController');
+Route::resource('inmuebles','InmueblesController');

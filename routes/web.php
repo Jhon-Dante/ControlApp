@@ -20,11 +20,7 @@ Auth::routes();
 
 
 Route::group(['middleware' => ['web']], function () {
-
 	Route::get('/home', 'HomeController@index')->name('home');
-	Route::Resource('usuarios', 'UserController');
-	Route::resource('residentes','ResidentesController');
-    //
 });
 
 

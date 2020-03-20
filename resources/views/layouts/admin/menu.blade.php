@@ -8,7 +8,7 @@
             <li class="menu-title">About</li>
 
             <li>
-                <router-link :to="{name: 'inicio'}">
+                <router-link :to="{name: 'home'}">
                     <i data-feather="home"></i>
                     <span> Escritorio </span>
                 </router-link>

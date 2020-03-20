@@ -14,89 +14,40 @@ class InmueblesController extends Controller
      */
     public function index()
     {
-        $inmmuebles=Inmuebles::all();
+        
 
-        return view('inmmuebles.index',compact('inmmuebles'));
+        return Inmuebles::get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('inmmuebles.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $buscar=Inmuebles::where('idem',$request->idem)->get();
-        if (count($buscar)>0) {
-            dd('idem ya registrado');
-            return redirect()->back();
-        } else {
-            $inmueble=new Inmuebles();
-            $inmueble->idem=$request->idem;
-            $inmueble->tipo=$request->tipo;
-            $inmueble->status=$request->status;
-            $inmueble->save();
-            return redirect()->to('inmuebles');
-        }
+        // $this->validate($request, [
+        //     'idem' => 'required',
+        //     'tipo' => 'required',
+        // ]);  
+
+        // $inmuebles=\DB::table('inmuebles')->insert([
+        //     'idem' => $request->idem,
+        //     'tipo' => $request->tipo,
+        //     'status' =>  'Disponible',
+        // ]);
+
+        return 1;
         
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Inmuebles  $inmuebles
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Inmuebles $inmuebles)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $this->validate($request, [
+            'idem' => 'required',
+            'tipo' => 'required',
+            'status' => 'required',
+        ]);  
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Inmuebles  $inmuebles
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id_inmueble)
-    {
-        $inmueble=Inmuebles::find($id_inmueble);
-
-        return view('inmuebles.edit',compact('inmueble'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Inmuebles  $inmuebles
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id_inmueble)
-    {
-        $buscar=Inmuebles::where('idem',$request->idem)->where('id','<>',$id_inmueble)->get();
-        if (count($buscar)>0) {
-            dd('idem ya registrado');
-            return redirect()->back();
-        } else {
-            $inmueble=new Inmuebles();
-            $inmueble->idem=$request->idem;
-            $inmueble->tipo=$request->tipo;
-            $inmueble->status=$request->status;
-            $inmueble->save();
-            return redirect()->to('inmuebles');
-        }
+        $inmueble=Inmuebles::find($id);
+        $inmueble->idem=$request->idem;
+        $inmueble->tipo=$request->tipo;
+        $inmueble->status=$request->status;
+        $inmueble->save();
     }
 
     /**
@@ -105,8 +56,9 @@ class InmueblesController extends Controller
      * @param  \App\Inmuebles  $inmuebles
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Inmuebles $inmuebles)
+    public function destroy(Inmuebles $inmuebles,$id)
     {
-        //
+        $eliminar = Inmuebles::where('id', $id)->first();
+        $eliminar->delete();
     }
 }
